@@ -1,0 +1,68 @@
+/* style.css - Web 1.0 Wiki Style */
+* { margin: 0; padding: 0; }
+body { 
+    background: #f5f5f5 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYlWP4//9/BRIbEAYByYgAKB8IAEZg7AAAAMAOAvA8CYvsAAAAAElFTkSuQmCC') repeat;
+    color: #000; 
+    font: 12px/1.5 Monaco, Consolas, "Lucida Console", monospace;
+    margin: 0;
+}
+
+.wiki-page { max-width: 900px; margin: 0 auto; background: #fff; border-left: 1px solid #aaa; border-right: 1px solid #aaa; }
+
+.top-table { width: 100%; background: #000; color: #fff; }
+.header-left, .header-right { width: 100px; }
+.header-center { text-align: center; padding: 20px 10px; }
+h1 { font: bold 36px Georgia, serif; letter-spacing: 3px; text-transform: uppercase; margin: 0; }
+.tagline { font-size: 11px; letter-spacing: 2px; margin: 10px 0 0 0; }
+
+.wiki-body { display: flex; min-height: 80vh; }
+.sidebar { width: 200px; background: #eee; border-right: 1px solid #ccc; padding: 10px 0; }
+.main-content { flex: 1; padding: 20px; }
+
+.navbox h3 { background: #ccc; font: bold 11px monospace; padding: 5px 10px; margin: 0 0 10px 0; }
+.navbox ul { list-style: none; font-size: 11px; }
+.navbox li { margin: 0 0 2px 10px; }
+.navbox a { color: #000; text-decoration: none; }
+.navbox a:hover { background: #A03435; color: #fff; }
+.navbox hr { height: 2px; border: none; background: #ccc; margin: 10px 10px; }
+
+.infobox { background: #f9f9f9; border: 1px solid #aaa; padding: 15px; margin: 0 0 30px 0; }
+.infobox h2 { font: bold 18px Georgia, serif; border-bottom: 2px solid #000; padding-bottom: 5px; margin: 0 0 15px 0; }
+
+h2 { font: bold 24px Georgia, serif; border-bottom: 2px solid #000; padding-bottom: 8px; margin: 30px 0 20px 0; letter-spacing: 1px; }
+h3 { font: bold 16px Georgia, serif; margin: 25px 0 15px 0; }
+
+.wikitable { 
+    background: #fff; 
+    border: 2px solid #000; 
+    border-collapse: collapse; 
+    margin: 15px 0; 
+    font-size: 11px;
+}
+.wikitable th, .wikitable td { 
+    border: 1px solid #000; 
+    padding: 8px 12px; 
+    text-align: left; 
+    vertical-align: top;
+}
+.wikitable th { background: #ccc; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 10px; }
+.punk-accent { background: #A03435 !important; color: #fff !important; }
+.punk-accent a { color: #fff; }
+
+dl { margin: 20px 0; }
+dt { font-weight: bold; margin: 15px 0 5px 0; }
+dd { margin: 0 0 15px 20px; }
+
+a { color: #002bb8; text-decoration: none; }
+a:visited { color: #6b16cc; }
+a:hover { background: #A03435; color: #fff; padding: 1px 2px; }
+
+.footer { clear: both; padding: 20px; text-align: center; background: #f5f5f5; border-top: 1px solid #ccc; }
+.footer hr { height: 3px; background: #ccc; border: none; margin: 0 0 15px 0; }
+.footer p { font-size: 10px; letter-spacing: 1px; }
+.footer a:hover { background: transparent; color: #A03435; }
+
+@media (max-width: 768px) {
+    .wiki-body { flex-direction: column; }
+    .sidebar { width: auto; order: 2; border-right: none; border-top: 1px solid #ccc; }
+}
