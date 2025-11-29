@@ -1,68 +1,466 @@
-/* style.css - Web 1.0 Wiki Style */
-* { margin: 0; padding: 0; }
-body { 
-    background: #f5f5f5 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYlWP4//9/BRIbEAYByYgAKB8IAEZg7AAAAMAOAvA8CYvsAAAAAElFTkSuQmCC') repeat;
-    color: #000; 
-    font: 12px/1.5 Monaco, Consolas, "Lucida Console", monospace;
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.wiki-page { max-width: 900px; margin: 0 auto; background: #fff; border-left: 1px solid #aaa; border-right: 1px solid #aaa; }
-
-.top-table { width: 100%; background: #000; color: #fff; }
-.header-left, .header-right { width: 100px; }
-.header-center { text-align: center; padding: 20px 10px; }
-h1 { font: bold 36px Georgia, serif; letter-spacing: 3px; text-transform: uppercase; margin: 0; }
-.tagline { font-size: 11px; letter-spacing: 2px; margin: 10px 0 0 0; }
-
-.wiki-body { display: flex; min-height: 80vh; }
-.sidebar { width: 200px; background: #eee; border-right: 1px solid #ccc; padding: 10px 0; }
-.main-content { flex: 1; padding: 20px; }
-
-.navbox h3 { background: #ccc; font: bold 11px monospace; padding: 5px 10px; margin: 0 0 10px 0; }
-.navbox ul { list-style: none; font-size: 11px; }
-.navbox li { margin: 0 0 2px 10px; }
-.navbox a { color: #000; text-decoration: none; }
-.navbox a:hover { background: #A03435; color: #fff; }
-.navbox hr { height: 2px; border: none; background: #ccc; margin: 10px 10px; }
-
-.infobox { background: #f9f9f9; border: 1px solid #aaa; padding: 15px; margin: 0 0 30px 0; }
-.infobox h2 { font: bold 18px Georgia, serif; border-bottom: 2px solid #000; padding-bottom: 5px; margin: 0 0 15px 0; }
-
-h2 { font: bold 24px Georgia, serif; border-bottom: 2px solid #000; padding-bottom: 8px; margin: 30px 0 20px 0; letter-spacing: 1px; }
-h3 { font: bold 16px Georgia, serif; margin: 25px 0 15px 0; }
-
-.wikitable { 
-    background: #fff; 
-    border: 2px solid #000; 
-    border-collapse: collapse; 
-    margin: 15px 0; 
-    font-size: 11px;
+body {
+    background:
+        radial-gradient(circle at 20% 80%, #ff00ff20 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, #00ffff20 0%, transparent 50%),
+        linear-gradient(45deg, #000000 0%, #1a0000 50%, #000011 100%);
+    background-attachment: fixed;
+    color: #00ff00;
+    font: 14px/1.6 'VT323', monospace;
+    margin: 0;
+    overflow-x: hidden;
+    text-shadow: 0 0 5px currentColor;
 }
-.wikitable th, .wikitable td { 
-    border: 1px solid #000; 
-    padding: 8px 12px; 
-    text-align: left; 
-    vertical-align: top;
+
+.wiki-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.92);
+    border: 3px solid #ff00ff;
+    border-image: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00) 1;
+    box-shadow:
+        0 0 30px #ff00ff80,
+        inset 0 0 30px rgba(0, 255, 255, 0.1);
+    position: relative;
 }
-.wikitable th { background: #ccc; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 10px; }
-.punk-accent { background: #A03435 !important; color: #fff !important; }
-.punk-accent a { color: #fff; }
 
-dl { margin: 20px 0; }
-dt { font-weight: bold; margin: 15px 0 5px 0; }
-dd { margin: 0 0 15px 20px; }
+.wiki-page::before {
+    content: 'WEBPUNK 11.0';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #ff00ff;
+    padding: 5px 20px;
+    font-size: 12px;
+    border: 2px solid #00ffff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
 
-a { color: #002bb8; text-decoration: none; }
-a:visited { color: #6b16cc; }
-a:hover { background: #A03435; color: #fff; padding: 1px 2px; }
+.top-table {
+    width: 100%;
+    background: linear-gradient(90deg, #ff0000, #0000ff, #00ff00);
+    background-size: 200% 100%;
+    animation: glitch 3s infinite;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
 
-.footer { clear: both; padding: 20px; text-align: center; background: #f5f5f5; border-top: 1px solid #ccc; }
-.footer hr { height: 3px; background: #ccc; border: none; margin: 0 0 15px 0; }
-.footer p { font-size: 10px; letter-spacing: 1px; }
-.footer a:hover { background: transparent; color: #A03435; }
+@keyframes glitch {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.header-left::after {
+    content: '█ ▓▒░';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255, 0, 0, 0.3);
+    padding: 20px 10px;
+    animation: scanline 2s infinite;
+}
+
+@keyframes scanline {
+
+    0%,
+    100% {
+        opacity: 1
+    }
+
+    50% {
+        opacity: 0.3
+    }
+}
+
+.header-center {
+    text-align: center;
+    padding: 30px 10px;
+    position: relative;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin: 0;
+    background: linear-gradient(45deg, #ffff00, #ff00ff, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px #ffff0080);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+.tagline {
+    font-size: 16px;
+    letter-spacing: 4px;
+    margin: 15px 0 0 0;
+    color: #ffff00;
+    text-shadow: 0 0 10px #ffff0080;
+    animation: flicker 1.5s infinite;
+}
+
+@keyframes flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.wiki-body {
+    display: flex;
+    min-height: 80vh;
+}
+
+.sidebar {
+    width: 220px;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 255, 0, 0.05) 0px,
+            rgba(0, 255, 0, 0.05) 2px,
+            rgba(255, 0, 255, 0.1) 2px,
+            rgba(255, 0, 255, 0.1) 4px);
+    border-right: 4px solid transparent;
+    background-clip: padding-box;
+    border-image: linear-gradient(#00ff00, #ff00ff) 1;
+    padding: 20px 10px;
+    position: sticky;
+    top: 0;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+.navbox h3 {
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 14px;
+    padding: 12px 15px;
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 2px solid #00ff00;
+    text-shadow: none;
+}
+
+.navbox ul {
+    list-style: none;
+}
+
+.navbox li {
+    margin: 0 0 8px 0;
+    position: relative;
+    padding-left: 10px;
+}
+
+.navbox li::before {
+    content: '►';
+    color: #ff00ff;
+    margin-right: 5px;
+}
+
+.navbox a {
+    color: #00ffff;
+    text-decoration: none;
+    padding: 4px 8px;
+    display: block;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.navbox a:hover {
+    background: linear-gradient(45deg, #ff0000, #ffff00);
+    color: #000;
+    border-left-color: #ffff00;
+    text-shadow: none;
+    transform: translateX(5px);
+}
+
+.navbox hr {
+    height: 2px;
+    border: none;
+    background: linear-gradient(90deg, transparent, #00ff00, #ff00ff, transparent);
+    margin: 20px 0;
+}
+
+.infobox {
+    background: rgba(0, 255, 0, 0.08);
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    padding: 25px;
+    margin: 0 0 40px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.infobox::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%
+    }
+
+    100% {
+        left: 100%
+    }
+}
+
+.infobox h2 {
+    font-size: 24px;
+    color: #ffff00;
+    border-bottom: 3px solid #ff00ff;
+    padding-bottom: 10px;
+    margin: 0 0 20px 0;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px #ffff0080;
+}
+
+h2 {
+    font-size: 32px;
+    color: #00ffff;
+    border-bottom: 4px solid #ff00ff;
+    padding-bottom: 15px;
+    margin: 40px 0 25px 0;
+    letter-spacing: 4px;
+    position: relative;
+}
+
+h2::after {
+    content: '██';
+    color: #ff00ff;
+    margin-left: 10px;
+}
+
+.wikitable {
+    background: rgba(255, 255, 255, 0.05);
+    border: 3px solid #00ffff;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 13px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.wikitable th,
+.wikitable td {
+    border: 2px solid #ff00ff;
+    padding: 15px 18px;
+    text-align: left;
+}
+
+.wikitable th {
+    background: linear-gradient(90deg, #ff00ff, #0000ff);
+    color: #00ff00;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.punk-accent {
+    background: linear-gradient(45deg, #ff0000, #ffff00) !important;
+    color: #000 !important;
+    animation: glitch-row 1s infinite;
+}
+
+@keyframes glitch-row {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-2px);
+    }
+
+    40% {
+        transform: translateX(2px);
+    }
+
+    60% {
+        transform: translateX(-1px);
+    }
+}
+
+/* Replace the .punk-accent a rule with mouse-tracking glow effect */
+.punk-accent {
+    background: linear-gradient(45deg, #ff0000, #ffff00) !important;
+    color: #000 !important;
+    animation: glitch-row 1s infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.punk-accent a {
+    color: #ff00ff !important;
+    position: relative;
+    z-index: 2;
+}
+
+.punk-accent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 0, 0.8),
+            rgba(255, 0, 255, 0.6),
+            transparent);
+    transition: left 0.5s ease;
+    z-index: 1;
+}
+
+.punk-accent:hover::before {
+    left: 100%;
+}
+
+.punk-accent a:hover {
+    text-shadow:
+        0 0 15px #ff00ff,
+        0 0 25px #ffff00;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+
+dl {
+    margin: 30px 0;
+}
+
+dt {
+    font-size: 18px;
+    color: #ffff00;
+    margin: 20px 0 8px 0;
+}
+
+dd {
+    margin: 0 0 20px 30px;
+}
+
+a {
+    color: #00ffff;
+    text-decoration: none;
+    border-bottom: 1px dashed currentColor;
+    transition: all 0.3s;
+}
+
+a:visited {
+    color: #ff00ff;
+}
+
+a:hover {
+    color: #ffff00;
+    background: rgba(255, 0, 255, 0.2);
+    text-shadow: 0 0 10px #ffff0080;
+    transform: scale(1.05);
+}
+
+.footer {
+    padding: 30px 25px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    border-top: 4px solid #ffff00;
+    position: relative;
+}
+
+.footer::before {
+    content: '█▓▒░ ACCESS TERMINAL ░▒▓█';
+    display: block;
+    color: #00ff00;
+    font-size: 12px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.footer hr {
+    height: 3px;
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+    border: none;
+    margin: 20px 0;
+}
+
+.footer p {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #00ffff;
+}
 
 @media (max-width: 768px) {
-    .wiki-body { flex-direction: column; }
-    .sidebar { width: auto; order: 2; border-right: none; border-top: 1px solid #ccc; }
+    .wiki-body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: relative !important;
+        top: auto !important;
+        z-index: auto !important;
+        border-right: none;
+        border-bottom: 3px solid #ff00ff;
+        background: repeating-linear-gradient(0deg,
+                rgba(0, 255, 0, 0.05) 0px,
+                rgba(0, 255, 0, 0.05) 2px,
+                rgba(255, 0, 255, 0.1) 2px,
+                rgba(255, 0, 255, 0.1) 4px);
+        padding: 20px 10px;
+        box-shadow: none;
+    }
+
+    .main-content {
+        padding: 15px 20px;
+    }
+
+    h1 {
+        font-size: 36px;
+        letter-spacing: 3px;
+    }
 }
